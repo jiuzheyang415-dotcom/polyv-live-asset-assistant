@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "保利威直播 AI 助手（黑客松）",
+  "version": "0.1.0",
+  "description": "在指定保利威频道页面唤醒直播装修图片助手",
+  "permissions": ["activeTab", "scripting", "storage"],
+  "host_permissions": ["http://127.0.0.1:8765/*", "https://*.polyv.net/*", "https://*.polyv.cn/*", "https://*.polyv.com/*"],
+  "background": { "service_worker": "background.js" },
+  "icons": {
+    "16": "assets/avatar.png",
+    "32": "assets/avatar.png",
+    "48": "assets/avatar.png",
+    "128": "assets/body.png"
+  },
+  "web_accessible_resources": [{ "resources": ["assets/*.png", "assets/tracking/*.png"], "matches": ["https://*.polyv.net/*", "https://*.polyv.cn/*", "https://*.polyv.com/*"] }],
+  "action": {
+    "default_title": "打开小保 AI 直播助手",
+    "default_icon": {
+      "16": "assets/avatar.png",
+      "32": "assets/avatar.png",
+      "48": "assets/avatar.png"
+    }
+  },
+  "content_scripts": [{ "matches": ["https://*.polyv.net/*", "https://*.polyv.cn/*", "https://*.polyv.com/*"], "js": ["embed.js"], "run_at": "document_idle" }]
+}
